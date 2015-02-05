@@ -3,6 +3,7 @@ Give it a directory path where all your movies/documentaries resides. It will fe
 
 ## Pre-requisites
 * ASP.NET Framework Version=v4.5
+* MS Excel
 
 If you are interested in just running it without loading the source code in Visual Studio, do the following:
 
