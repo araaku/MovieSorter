@@ -18,16 +18,17 @@ namespace VideoSorter
             string targetDirectory = string.Empty;
 
             /// try to read from command line
-            if (args.Length > 0) {
+            if (args.Length > 0)
+            {
                 targetDirectory = args[0];
             }
-            
+
             IList<string> fileNames = Common.ReadAllFiles(targetDirectory);
             List<Movie> sanitizedList = new List<Movie>();
 
             sanitizedList.Add(new Movie());
 
-            if (fileNames != null)
+            if (fileNames != null && fileNames.Count > 0)
             {
                 foreach (string value in fileNames)
                 {
@@ -47,8 +48,11 @@ namespace VideoSorter
             Console.WriteLine("Total files read from disk: {0}", fileNames.Count);
             Console.WriteLine("Total files sanitized: {0}", sanitizedList.Count);
 
-            /// Export to Excel
-            Common.ExportGenericListToExcel(sanitizedList, "");
+            if (sanitizedList.Count > 0)
+            {
+                /// Export to Excel
+                Common.ExportGenericListToExcel(sanitizedList, "");
+            }
 
         }
     }

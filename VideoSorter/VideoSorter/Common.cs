@@ -29,6 +29,8 @@ namespace VideoSorter
 
             string[] arr = extensions.SelectMany(i => Directory.GetFiles(directoryLocation, i, SearchOption.AllDirectories)).Select(i => Path.GetFileNameWithoutExtension(i).ToLower().Trim()).ToArray();
 
+            Console.WriteLine("Number of video files found: " + arr.Length);
+
             return arr.ToList();
         }
 
