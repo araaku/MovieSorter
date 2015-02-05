@@ -13,7 +13,6 @@ namespace VideoSorter
     class IMDB
     {
         private string serviceURL = "http://www.omdbapi.com";
-        private Movie _movie;
 
         public Movie GetDetails(Movie movie)
         {
@@ -32,11 +31,10 @@ namespace VideoSorter
             client.BaseAddress = new Uri(serviceURL);
 
             // Add an Accept header for JSON format.
-            client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             // List data response.
-            HttpResponseMessage response = client.GetAsync(string.Format("?t={0}&y={1}", movie.Title, movie.Year != "0" ? movie.Year : "")).Result;  // Blocking call!
+            HttpResponseMessage response = client.GetAsync(string.Format("?t={0}&y={1}", movie.Title, movie.Year != "0" ? movie.Year : "")).Result;
             if (response.IsSuccessStatusCode)
             {
                 // Parse the response body. Blocking!

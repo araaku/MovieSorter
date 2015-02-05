@@ -22,8 +22,11 @@ namespace VideoSorter
         /// Common words used which are generally not a part of the title
         public static string[] unwantedWords = "BRRip,DvDrip,Xvid,MAXSPEED,aXXo".ToLower().Split(',');
 
-        public static IList<string> ReadAllFiles()
+        public static IList<string> ReadAllFiles(string _directoryLocation = "")
         {
+            if (!string.IsNullOrEmpty(_directoryLocation))
+                directoryLocation = _directoryLocation;
+
             string[] arr = extensions.SelectMany(i => Directory.GetFiles(directoryLocation, i, SearchOption.AllDirectories)).Select(i => Path.GetFileNameWithoutExtension(i).ToLower().Trim()).ToArray();
 
             return arr.ToList();

@@ -15,9 +15,14 @@ namespace VideoSorter
         private static IMDB imdb = new IMDB();
         static void Main(string[] args)
         {
+            string targetDirectory = string.Empty;
 
+            /// try to read from command line
+            if (args.Length > 0) {
+                targetDirectory = args[0];
+            }
             
-            IList<string> fileNames = Common.ReadAllFiles();
+            IList<string> fileNames = Common.ReadAllFiles(targetDirectory);
             List<Movie> sanitizedList = new List<Movie>();
 
             sanitizedList.Add(new Movie());
